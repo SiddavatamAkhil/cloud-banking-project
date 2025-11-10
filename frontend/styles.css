@@ -1,0 +1,185 @@
+:root{
+  --bg:#0b1220; --bg-2:#101a30; --text:#e8eefc; --muted:#a6b3d1;
+  --primary:#2f7afe; --primary-700:#1a56db; --surface:#15223c; --card:#0f172a;
+  --border:#26324d; --ok:#16a34a; --warn:#f59e0b; --err:#ef4444;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg),var(--bg-2));line-height:1.5}
+
+.skip-link{position:absolute;left:-999px;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:1rem;top:1rem;background:#fff;color:#000;padding:.5rem 1rem;border-radius:.5rem;z-index:1000}
+
+.site-header{position:sticky;top:0;background:rgba(11,18,32,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:999}
+.nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
+.logo{color:var(--text);text-decoration:none;font-weight:700}
+.nav-toggle{background:transparent;border:1px solid var(--border);border-radius:.5rem;padding:.5rem;display:inline-flex;flex-direction:column;gap:4px;cursor:pointer}
+.bar{width:24px;height:2px;background:var(--text)}
+.menu{list-style:none;margin:0;padding:0;display:flex;gap:.75rem;flex-direction:column;position:absolute;right:1rem;top:64px;background:var(--surface);border:1px solid var(--border);border-radius:.75rem;min-width:240px;padding:.5rem}
+.menu li a{display:block;padding:.6rem .8rem;border-radius:.5rem;text-decoration:none;color:var(--text)}
+.menu li a:hover,.menu li a:focus{background:rgba(47,122,254,.15)}
+.menu-cta a{background:var(--primary);color:#fff}
+.menu-cta-alt a{border:1px solid var(--primary)}
+@media (min-width:900px){.nav-toggle{display:none}.menu{position:static;flex-direction:row;background:transparent;border:none;padding:0;min-width:auto}}
+
+.hero{max-width:1200px;margin:2rem auto;padding:2rem 1rem;display:grid;gap:1rem;background:radial-gradient(1200px 600px at 80% -100%, rgba(47,122,254,.35), transparent 60%)}
+.hero__actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.chip{display:inline-block;padding:.35rem .7rem;border:1px solid var(--border);border-radius:999px;color:var(--text);text-decoration:none;margin-right:.5rem}
+
+.section,.dashboard{max-width:1200px;margin:2rem auto;padding:1rem}
+.grid{display:grid;gap:1rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1rem;border:1px solid var(--border);border-radius:.6rem;color:var(--text);background:var(--surface);cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.05)}
+.btn--primary{background:var(--primary);border-color:var(--primary);color:#fff}
+.row{display:flex;gap:.5rem;flex-wrap:wrap}
+
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:.75rem;padding:1rem}
+.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:.75rem;padding:1rem}
+
+.field{display:grid;gap:.35rem;margin:.8rem 0}
+.field-inline{display:flex;gap:1rem;align-items:center;justify-content:space-between;margin:.8rem 0}
+label{font-weight:600}
+input,select{appearance:none;width:100%;padding:.6rem .7rem;border-radius:.6rem;border:1px solid var(--border);background:var(--card);color:var(--text)}
+input:focus,select:focus{outline:3px solid rgba(47,122,254,.35);border-color:var(--primary)}
+small.error{min-height:1.1rem;color:var(--err)}
+.muted{color:var(--muted)}
+
+.accounts,.transactions,.list-results{list-style:none;margin:0;padding:0}
+.accounts li,.transactions li,.list-results li{border-bottom:1px dashed var(--border);padding:.6rem 0;display:flex;justify-content:space-between;gap:1rem}
+.accounts li:last-child,.transactions li:last-child,.list-results li:last-child{border-bottom:none}
+
+.rate{font-weight:700;color:#b7d2ff}
+
+.chat{margin-top:1rem}
+.chat__log{min-height:140px;max-height:240px;overflow:auto;border:1px solid var(--border);border-radius:.5rem;padding:.5rem;background:var(--card)}
+.chat__form{display:flex;gap:.5rem;margin-top:.5rem}
+
+.view{display:none}
+.view--active{display:block}
+
+.site-footer{max-width:1200px;margin:2rem auto;padding:1rem;color:var(--muted);border-top:1px solid var(--border)}
+
+/* ===== Auth: layout & card ===== */
+#signin .auth, #signup .auth{
+  max-width: 720px;
+  margin: 6vh auto 8vh;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%) var(--surface);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+#signin h2, #signup h2{
+  margin: 0 0 .25rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+}
+#signin .muted, #signup .muted{
+  margin-top: .25rem;
+}
+
+/* Improve vertical rhythm inside forms */
+#signin form, #signup form{
+  margin-top: .25rem;
+}
+
+/* ===== Inputs: sizing, focus, states ===== */
+#signin input, #signup input, 
+#signin select, #signup select{
+  padding: .8rem .9rem;
+  border-radius: .65rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+#signin input:focus, #signup input:focus,
+#signin select:focus, #signup select:focus{
+  outline: 3px solid rgba(47,122,254,.35);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(47,122,254,.15) inset;
+}
+
+/* Optional visual states if JS toggles .input-err/.input-ok */
+.input-err{ border-color: rgba(239,68,68,.65) !important; box-shadow: 0 0 0 2px rgba(239,68,68,.15) inset !important; }
+.input-ok{  border-color: rgba(22,163,74,.6) !important;  box-shadow: 0 0 0 2px rgba(22,163,74,.15) inset !important; }
+
+/* ===== Fields & errors ===== */
+#signin .field, #signup .field{
+  display: grid;
+  gap: .35rem;
+  margin: .85rem 0;
+}
+#signin small.error, #signup small.error{
+  display: block;
+  margin-top: .2rem;
+  color: var(--err);
+  font-size: .92rem;
+}
+
+/* Inline row (remember + forgot) */
+#signin .field-inline, #signup .field-inline{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin: .6rem 0 0;
+}
+
+/* ===== Two-column enhancement on wide screens ===== */
+@media (min-width: 800px){
+  /* Turn the auth form fields into a responsive grid while
+     keeping good reading order for screen readers */
+  #signin form > .field, 
+  #signup form > .field{
+    margin: 0.85rem 0;
+  }
+
+  /* Group fields into two columns using a wrapper grid without
+     modifying the HTML; target direct field children pattern */
+  #signup form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1rem;
+  }
+  /* Make each field occupy a column */
+  #signup form > .field{ margin: 0; }
+  /* Make submit row span full width */
+  #signup form > .btn.btn--primary{ grid-column: 1 / -1; }
+
+  /* For Sign in (usually fewer fields), keep single column by default,
+     but widen the primary action and align helper text */
+  #signin form{ display: grid; grid-template-columns: 1fr; gap: .9rem; }
+}
+
+/* ===== Buttons: minimum tap size ===== */
+#signin .btn, #signup .btn{
+  min-width: 160px;
+  padding: .75rem 1.1rem;
+}
+
+/* Secondary text link under submit */
+#signin p.muted, #signup p.muted{
+  margin-top: .6rem;
+}
+
+/* ===== Optional: helper chips or links inside auth ===== */
+#signin a.muted, #signup a.muted{
+  color: #b7d2ff;
+  text-decoration: underline;
+}
+
+/* ===== Compact spacing for the auth pages on very small screens ===== */
+@media (max-width: 380px){
+  #signin .auth, #signup .auth{
+    margin: 4vh 1rem 6vh;
+    padding: 1rem;
+  }
+}
+

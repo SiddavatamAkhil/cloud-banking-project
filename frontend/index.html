@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Secure Bank</title>
+  <meta name="description" content="Modern online banking: accounts, transfers, calculators, budgeting, and card controls." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Primary">
+      <a class="logo" href="#home" data-route aria-label="Secure Bank home">Secure Bank</a>
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="Open menu">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      <ul id="primaryMenu" class="menu" hidden>
+        <li><a href="#home" data-route>Home</a></li>
+        <li><a href="#products" data-route>Products</a></li>
+        <li><a href="#calculators" data-route>Calculators</a></li>
+        <li><a href="#locator" data-route>Branch & ATM</a></li>
+        <li><a href="#help" data-route>Help</a></li>
+        <li class="menu-cta"><a href="#signin" data-route>Sign in</a></li>
+        <li class="menu-cta-alt"><a href="#signup" data-route>Open account</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Marketing -->
+    <section id="home" class="view view--active" data-view>
+      <section class="hero">
+        <div class="hero__content">
+          <h1>Banking that works everywhere</h1>
+          <p>Check balances, transfer funds, pay bills, manage cards, and track budgets on any device.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#signup" data-route>Open an account</a>
+            <a class="btn btn--ghost" href="#signin" data-route>Sign in</a>
+          </div>
+        </div>
+        <div class="hero__quick">
+          <a class="chip" href="#calculators" data-route>Mortgage calculator</a>
+          <a class="chip" href="#locator" data-route>Find a branch/ATM</a>
+          <a class="chip" href="#products" data-route>Rates & fees</a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="why-title">
+        <h2 id="why-title">Why Secure Bank</h2>
+        <ul class="cards">
+          <li class="card"><h3>24/7 access</h3><p>Manage accounts and payments at any time with secure login and alerts.</p></li>
+          <li class="card"><h3>All-in-one</h3><p>Transfers, bill pay, card controls, budgeting and statements in one place.</p></li>
+          <li class="card"><h3>Accessible</h3><p>Keyboard-friendly, high contrast, and screen reader support per WCAG 2.1.</p></li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- Products / Rates -->
+    <section id="products" class="view" data-view aria-labelledby="prod-title">
+      <div class="section">
+        <h2 id="prod-title">Products and rates</h2>
+        <div class="grid grid-3">
+          <article class="panel">
+            <h3>Checking</h3>
+            <p>No monthly fee with direct deposit. Online bill pay included.</p>
+            <p class="rate">APY: 0.25%</p>
+            <a class="btn" href="#signup" data-route>Open checking</a>
+          </article>
+          <article class="panel">
+            <h3>Savings</h3>
+            <p>High-yield savings with automatic transfers and goal tracking.</p>
+            <p class="rate">APY: 4.10%</p>
+            <a class="btn" href="#signup" data-route>Open savings</a>
+          </article>
+          <article class="panel">
+            <h3>Certificates</h3>
+            <p>Lock in a fixed rate for 6–24 months with FDIC coverage.</p>
+            <p class="rate">APY: 5.00%</p>
+            <a class="btn" href="#signup" data-route>Open CD</a>
+          </article>
+        </div>
+        <p class="muted">Rates shown for demo; update dynamically from APIs in production.</p>
+      </div>
+    </section>
+
+    <!-- Calculators -->
+    <section id="calculators" class="view" data-view aria-labelledby="calc-title">
+      <div class="section">
+        <h2 id="calc-title">Financial calculators</h2>
+        <div class="grid">
+          <section class="panel" aria-labelledby="loan-title">
+            <h3 id="loan-title">Loan payment</h3>
+            <form id="loanCalc" class="calc" novalidate>
+              <div class="field"><label for="loan-amount">Amount</label><input id="loan-amount" type="number" min="0" step="0.01" required /></div>
+              <div class="field"><label for="loan-rate">Interest %</label><input id="loan-rate" type="number" min="0" step="0.01" required /></div>
+              <div class="field"><label for="loan-term">Term (years)</label><input id="loan-term" type="number" min="1" step="1" required /></div>
+              <button class="btn" type="submit">Calculate</button>
+              <p id="loan-result" aria-live="polite" class="muted"></p>
+            </form>
+          </section>
+          <section class="panel" aria-labelledby="save-title">
+            <h3 id="save-title">Savings goal</h3>
+            <form id="saveCalc" class="calc" novalidate>
+              <div class="field"><label for="save-target">Target</label><input id="save-target" type="number" min="0" step="0.01" required /></div>
+              <div class="field"><label for="save-years">Years</label><input id="save-years" type="number" min="1" step="1" required /></div>
+              <div class="field"><label for="save-apy">APY %</label><input id="save-apy" type="number" min="0" step="0.01" required /></div>
+              <button class="btn" type="submit">Calculate</button>
+              <p id="save-result" aria-live="polite" class="muted"></p>
+            </form>
+          </section>
+          <section class="panel" aria-labelledby="debt-title">
+            <h3 id="debt-title">Debt payoff</h3>
+            <form id="debtCalc" class="calc" novalidate>
+              <div class="field"><label for="debt-balance">Balance</label><input id="debt-balance" type="number" min="0" step="0.01" required /></div>
+              <div class="field"><label for="debt-rate">APR %</label><input id="debt-rate" type="number" min="0" step="0.01" required /></div>
+              <div class="field"><label for="debt-pay">Monthly pay</label><input id="debt-pay" type="number" min="0" step="0.01" required /></div>
+              <button class="btn" type="submit">Estimate</button>
+              <p id="debt-result" aria-live="polite" class="muted"></p>
+            </form>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Branch & ATM Locator -->
+    <section id="locator" class="view" data-view aria-labelledby="loc-title">
+      <div class="section">
+        <h2 id="loc-title">Find a branch or ATM</h2>
+        <form id="locForm" class="loc" novalidate>
+          <div class="field"><label for="loc-query">City or ZIP</label><input id="loc-query" type="text" placeholder="e.g., 560001" required /></div>
+          <div class="field">
+            <label for="loc-type">Type</label>
+            <select id="loc-type"><option value="branch">Branch</option><option value="atm">ATM</option></select>
+          </div>
+          <button class="btn" type="submit">Search</button>
+        </form>
+        <ul id="locResults" class="list-results" aria-live="polite"></ul>
+      </div>
+    </section>
+
+    <!-- Auth -->
+    <section id="signin" class="view" aria-labelledby="signin-title" data-view>
+      <div class="auth">
+        <h2 id="signin-title">Sign in</h2>
+        <form id="signinForm" novalidate>
+          <div class="field"><label for="signin-email">Email</label><input id="signin-email" type="email" autocomplete="username" required /><small class="error" id="signin-email-error"></small></div>
+          <div class="field"><label for="signin-password">Password</label><input id="signin-password" type="password" minlength="8" autocomplete="current-password" required /><small class="error" id="signin-password-error"></small></div>
+          <div class="field-inline">
+            <label><input id="remember" type="checkbox" /> Keep me signed in</label>
+            <a class="muted" href="#help" data-route>Forgot password?</a>
+          </div>
+          <button class="btn btn--primary" type="submit">Sign in</button>
+          <p class="muted">No account? <a href="#signup" data-route>Create one</a></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="signup" class="view" aria-labelledby="signup-title" data-view>
+      <div class="auth">
+        <h2 id="signup-title">Open an account</h2>
+        <form id="signupForm" novalidate>
+          <div class="field"><label for="name">Full name</label><input id="name" type="text" autocomplete="name" required /><small class="error" id="name-error"></small></div>
+          <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required /><small class="error" id="email-error"></small></div>
+          <div class="field"><label for="password">Password</label><input id="password" type="password" minlength="8" required /><small class="error" id="password-error"></small></div>
+          <div class="field"><label for="confirm">Confirm password</label><input id="confirm" type="password" minlength="8" required /><small class="error" id="confirm-error"></small></div>
+          <button class="btn btn--primary" type="submit">Create account</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="view" aria-labelledby="dash-title" data-view>
+      <div class="dashboard">
+        <h2 id="dash-title">Dashboard</h2>
+
+        <div class="grid">
+          <section class="panel" aria-labelledby="acct-title">
+            <h3 id="acct-title">Accounts</h3>
+            <ul id="accountsList" class="accounts"></ul>
+            <div class="row">
+              <a class="btn" href="#statements" data-route>Statements</a>
+              <a class="btn" href="#alerts" data-route>Alerts</a>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="tx-title">
+            <h3 id="tx-title">Recent transactions</h3>
+            <ul id="transactionsList" class="transactions"></ul>
+          </section>
+
+          <section class="panel" aria-labelledby="transfer-title">
+            <h3 id="transfer-title">Transfers</h3>
+            <form id="transferForm" novalidate>
+              <div class="field"><label for="from">From</label><select id="from" required></select><small class="error" id="from-error"></small></div>
+              <div class="field"><label for="to">To</label><select id="to" required></select><small class="error" id="to-error"></small></div>
+              <div class="field"><label for="amount">Amount</label><input id="amount" type="number" step="0.01" min="0.01" required /><small class="error" id="amount-error"></small></div>
+              <button class="btn btn--primary" type="submit">Transfer</button>
+              <p class="muted" id="transferStatus" aria-live="polite"></p>
+            </form>
+            <details class="muted"><summary>External transfer</summary><p>Add payee and verify micro-deposits (demo stub).</p></details>
+            <details class="muted"><summary>Schedule payment</summary><p>Set date/frequency for recurring transfers (demo stub).</p></details>
+          </section>
+
+          <section class="panel" aria-labelledby="card-title">
+            <h3 id="card-title">Card controls</h3>
+            <div class="field-inline">
+              <label><input type="checkbox" id="cardLock" /> Lock debit card</label>
+            </div>
+            <div class="row">
+              <button class="btn" id="cardReplace">Request replacement</button>
+              <button class="btn" id="travelNotice">Set travel notice</button>
+            </div>
+            <p class="muted" id="cardStatus" aria-live="polite"></p>
+          </section>
+
+          <section class="panel" aria-labelledby="pfm-title">
+            <h3 id="pfm-title">Budgets & insights</h3>
+            <form id="budgetForm" class="budget" novalidate>
+              <div class="field"><label for="cat">Category</label>
+                <select id="cat">
+                  <option value="Groceries">Groceries</option>
+                  <option value="Dining">Dining</option>
+                  <option value="Utilities">Utilities</option>
+                  <option value="Transport">Transport</option>
+                </select>
+              </div>
+              <div class="field"><label for="limit">Monthly limit</label><input id="limit" type="number" min="0" step="0.01" required /></div>
+              <button class="btn" type="submit">Set budget</button>
+              <p class="muted" id="budgetStatus" aria-live="polite"></p>
+            </form>
+            <ul id="budgetsList" class="list-results"></ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statements -->
+    <section id="statements" class="view" data-view aria-labelledby="stmt-title">
+      <div class="section">
+        <h2 id="stmt-title">Statements</h2>
+        <ul id="statementList" class="list-results"></ul>
+        <p class="muted">Export CSV/PDF is stubbed for demo; wire to server later.</p>
+      </div>
+    </section>
+
+    <!-- Alerts -->
+    <section id="alerts" class="view" data-view aria-labelledby="alert-title">
+      <div class="section">
+        <h2 id="alert-title">Alerts & preferences</h2>
+        <form id="alertForm" class="alerts">
+          <label><input type="checkbox" id="alertLow" /> Balance below $100</label>
+          <label><input type="checkbox" id="alertLarge" /> Purchases over $500</label>
+          <label><input type="checkbox" id="alertBills" /> Upcoming bill due</label>
+          <button class="btn" type="submit">Save</button>
+          <p class="muted" id="alertStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Help / Support -->
+    <section id="help" class="view" data-view aria-labelledby="help-title">
+      <div class="section">
+        <h2 id="help-title">Help center</h2>
+        <details><summary>Password reset</summary><p>Use the registered email to receive a reset link (demo stub).</p></details>
+        <details><summary>Report lost card</summary><p>Lock the card and contact support immediately (demo stub).</p></details>
+        <details><summary>Contact support</summary><p>Call +1 (555) 012-3456 or start chat below.</p></details>
+        <div class="chat panel" aria-labelledby="chat-title">
+          <h3 id="chat-title">Live chat (demo)</h3>
+          <div id="chatLog" class="chat__log" role="log" aria-live="polite"></div>
+          <form id="chatForm" class="chat__form">
+            <input id="chatInput" type="text" placeholder="Type a message…" />
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2025 Secure Bank.</p>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

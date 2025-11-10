@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS user_profiles (
+  sub VARCHAR(255) PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  locale VARCHAR(20),
+  theme VARCHAR(20)
+);
