@@ -33,8 +33,9 @@ const auth = (() => {
     }
   }
 
-  async function send(path, payload) {
-    const res = await fetch(`http://localhost:8080${path}`, {
+async function send(path, payload) {
+    const res = await fetch(`https://cloud-banking-project.onrender.com${path}`, {
+// ...
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -72,9 +73,10 @@ const auth = (() => {
     return Boolean(accessToken);
   }
 
-  async function refreshProfile() {
+async function refreshProfile() {
     if (!accessToken) return null;
-    const res = await fetch('http://localhost:8080/auth/me', {
+    const res = await fetch('https://cloud-banking-project.onrender.com/auth/me', {
+// ...
       headers: { 'Authorization': `Bearer ${accessToken}` }
     });
     if (!res.ok) {
@@ -93,7 +95,7 @@ async function api(path, options = {}){
   const token = auth.getToken();
   const headers = { 'Content-Type':'application/json', ...(options.headers || {}) };
   if (token) headers.Authorization = `Bearer ${token}`;
-  const res = await fetch(`http://localhost:8080${path}`, { ...options, headers });
+  const res = await fetch(`https://cloud-banking-project.onrender.com${path}`, { ...options, headers });
   if (res.status === 401 || res.status === 403){
     auth.logout();
     history.pushState({}, '', '#signin');
